@@ -98,7 +98,15 @@ public class Principal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabla_general = new javax.swing.JTable();
+        cb_listar = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        arbol_restaurante = new javax.swing.JTree();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        arbol_cancha = new javax.swing.JTree();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -189,7 +197,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(restauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(calificacion_restaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(restauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(nivel_restaurante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -269,7 +277,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(nombre_casa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addGroup(casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, casaLayout.createSequentialGroup()
                         .addComponent(jLabel22)
@@ -291,7 +299,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(59, 59, 59))
             .addGroup(casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(casaLayout.createSequentialGroup()
-                    .addContainerGap(345, Short.MAX_VALUE)
+                    .addContainerGap(365, Short.MAX_VALUE)
                     .addComponent(agregar_casa)
                     .addGap(34, 34, 34)))
         );
@@ -376,7 +384,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(nombre_canchas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(categoria_canchas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(canncahsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(estado_cancha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -399,7 +407,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(62, 62, 62))
             .addGroup(canncahsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(canncahsLayout.createSequentialGroup()
-                    .addContainerGap(345, Short.MAX_VALUE)
+                    .addContainerGap(365, Short.MAX_VALUE)
                     .addComponent(agregar_canchas)
                     .addGap(34, 34, 34)))
         );
@@ -481,7 +489,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(48, 48, 48)
                 .addComponent(jButton1)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         tab_lugares.addTab("Carreteras", carreteras);
@@ -510,10 +518,12 @@ public class Principal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Direccion", "Nivel Seguridad", "Categoria"
+                "Nombre", "Direccion", "Categoria", "Nivel Seguridad", "Estado"
             }
         ));
         jScrollPane4.setViewportView(tabla_general);
+
+        cb_listar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Restaurantes", "Canchas", "Carreteras" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -523,26 +533,84 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(cb_listar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(cb_listar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         tab_lista.addTab("Tablas", jPanel3);
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Restaurantes");
+        arbol_restaurante.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane5.setViewportView(arbol_restaurante);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(315, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Restaurantes", jPanel5);
+
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Canchas");
+        arbol_cancha.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane6.setViewportView(arbol_cancha);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(157, 157, 157)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(221, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(131, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Canchas", jPanel6);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 692, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
 
         tab_lista.addTab("Arboles", jPanel4);
@@ -601,8 +669,8 @@ public class Principal extends javax.swing.JFrame {
             lista_lugar.add(new Restaurantes(categoria, calificacion, nombre, direccion, nivel_seguridad, new Carretera(), new Carretera()));
             JOptionPane.showMessageDialog(this, "El Restaurante fue agregado");
             DefaultTableModel modelo = (DefaultTableModel) tabla_general.getModel();
-            Object[] newrow = {nombre_restaurante.getText(), direccion_restaurante.getText(), calificacion_restaurante.getValue(),
-                categoria_restaurante.getSelectedItem()};
+            Object[] newrow = {nombre_restaurante.getText(), direccion_restaurante.getText(), categoria_restaurante.getSelectedItem(),
+                calificacion_restaurante.getValue()};
             modelo.addRow(newrow);
             tabla_general.setModel(modelo);
             nombre_restaurante.setText("");
@@ -623,6 +691,8 @@ public class Principal extends javax.swing.JFrame {
             direccion = direccion_restaurante.getText();
             nivel_seguridad = Integer.parseInt(nivel_restaurante.getText());
             lista_lugar.add(new Casa(nombre, direccion, nivel_seguridad, new Carretera(), new Carretera()));
+            JOptionPane.showMessageDialog(this, "La cancha fue agregada ");
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "No se Puedo Agregar");
@@ -632,12 +702,18 @@ public class Principal extends javax.swing.JFrame {
     private void agregar_canchasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_canchasActionPerformed
         // TODO add your handling code here:
         try {
-            nombre = nombre_restaurante.getText();
-            direccion = direccion_restaurante.getText();
-            nivel_seguridad = Integer.parseInt(nivel_restaurante.getText());
+            nombre = nombre_canchas.getText();
+            direccion = direccion_canchas.getText();
+            nivel_seguridad = Integer.parseInt(nivel_canchas.getText());
             estado = estado_cancha.getText();
             categoria = (String) categoria_canchas.getSelectedItem();
             lista_lugar.add(new Canchas(categoria, estado, nombre, direccion, nivel_seguridad, new Carretera(), new Carretera()));
+            JOptionPane.showMessageDialog(this, "La cancha fue agregada ");
+            DefaultTableModel modelo = (DefaultTableModel) tabla_general.getModel();
+            Object[] newrow = {nombre_canchas.getText(), direccion_canchas.getText(),
+                categoria_restaurante.getSelectedItem()};
+            modelo.addRow(newrow);
+            tabla_general.setModel(modelo);
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "No se Puedo Agregar");
@@ -683,12 +759,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton agregar_canchas;
     private javax.swing.JButton agregar_casa;
     private javax.swing.JButton agregar_restaurante;
+    private javax.swing.JTree arbol_cancha;
+    private javax.swing.JTree arbol_restaurante;
     private javax.swing.JSpinner calificacion_restaurante;
     private javax.swing.JPanel canncahs;
     private javax.swing.JPanel carreteras;
     private javax.swing.JPanel casa;
     private javax.swing.JComboBox<String> categoria_canchas;
     private javax.swing.JComboBox<String> categoria_restaurante;
+    private javax.swing.JComboBox<String> cb_listar;
     private javax.swing.JTextArea direccion_canchas;
     private javax.swing.JTextArea direccion_casa;
     private javax.swing.JTextArea direccion_restaurante;
@@ -727,10 +806,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel lugares;
     private javax.swing.JTabbedPane lugares_tab;
     private javax.swing.JTextField nivel_canchas;
