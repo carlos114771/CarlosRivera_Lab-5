@@ -8,6 +8,8 @@ package carlosrivera_lab.pkg5;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -550,7 +552,7 @@ public class Principal extends javax.swing.JFrame {
 
         tab_lista.addTab("Tablas", jPanel3);
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Restaurantes");
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Categorias");
         arbol_restaurante.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane5.setViewportView(arbol_restaurante);
 
@@ -673,6 +675,20 @@ public class Principal extends javax.swing.JFrame {
                 calificacion_restaurante.getValue()};
             modelo.addRow(newrow);
             tabla_general.setModel(modelo);
+
+            DefaultTreeModel m = (DefaultTreeModel) arbol_restaurante.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+            DefaultMutableTreeNode nodo_lugar;
+            nodo_lugar = new DefaultMutableTreeNode(new Lugares(nombre,
+                    direccion, nivel_seguridad, new Carretera(), new Carretera()));
+            DefaultMutableTreeNode categorias;
+            categorias = new DefaultMutableTreeNode(categoria_restaurante.getSelectedItem());
+            DefaultMutableTreeNode nombres_restaurante;
+            nombres_restaurante = new DefaultMutableTreeNode(this.nombre_restaurante.getText());
+            categorias.add(nombres_restaurante);
+            nodo_lugar.add(categorias);
+            raiz.add(categorias);
+            m.reload();
             nombre_restaurante.setText("");
             direccion_restaurante.setText("");
             nivel_restaurante.setText("");
@@ -835,7 +851,8 @@ public class Principal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     ArrayList<Lugares> lista_lugar = new ArrayList();
     ArrayList<Carretera> lista_carretera = new ArrayList();
-
+    DefaultMutableTreeNode nodo_seleccionado;
+    Lugares lugar_seleccionado;
     String nombre;
     String direccion;
     String estado;
