@@ -6,6 +6,7 @@
 package carlosrivera_lab.pkg5;
 
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -34,6 +35,10 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        eliminar = new javax.swing.JPopupMenu();
+        elimiar_restaurante = new javax.swing.JMenuItem();
+        eliminar_canchas = new javax.swing.JMenuItem();
+        eliminar_carreteras = new javax.swing.JMenuItem();
         tab_principal = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         tab_lugares = new javax.swing.JTabbedPane();
@@ -91,24 +96,56 @@ public class Principal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         distancia_carretera = new javax.swing.JTextField();
         numero_carretera = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jc_inicio = new javax.swing.JComboBox<>();
+        jc_final = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         tab_lista = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        arbol_general = new javax.swing.JTree();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabla_general = new javax.swing.JTable();
         jr_restaurante = new javax.swing.JRadioButton();
         jr_canchas = new javax.swing.JRadioButton();
         jr_carreteras = new javax.swing.JRadioButton();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        arbol_general = new javax.swing.JTree();
+        jPanel5 = new javax.swing.JPanel();
+
+        elimiar_restaurante.setText("Eliminar Restaurante");
+        elimiar_restaurante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elimiar_restauranteActionPerformed(evt);
+            }
+        });
+        eliminar.add(elimiar_restaurante);
+
+        eliminar_canchas.setText("Eliminar Canchas");
+        eliminar_canchas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminar_canchasActionPerformed(evt);
+            }
+        });
+        eliminar.add(eliminar_canchas);
+
+        eliminar_carreteras.setText("Eliminar Carreteras");
+        eliminar_carreteras.setToolTipText("");
+        eliminar_carreteras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminar_carreterasActionPerformed(evt);
+            }
+        });
+        eliminar.add(eliminar_carreteras);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tab_lugares.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tab_lugaresStateChanged(evt);
+            }
+        });
 
         jLabel16.setText("Nombre");
 
@@ -437,13 +474,18 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel6.setText("Distancia");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jc_inicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
         jLabel7.setText("Lugar Inicio");
 
         jLabel8.setText("Lugar Final");
 
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout carreterasLayout = new javax.swing.GroupLayout(carreteras);
         carreteras.setLayout(carreterasLayout);
@@ -458,8 +500,8 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(29, 29, 29)
                 .addGroup(carreterasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox2, 0, 142, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jc_final, 0, 142, Short.MAX_VALUE)
+                    .addComponent(jc_inicio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(numero_carretera)
                     .addComponent(distancia_carretera))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -481,11 +523,11 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(distancia_carretera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
                 .addGroup(carreterasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jc_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(carreterasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jc_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(48, 48, 48)
                 .addComponent(jButton1)
@@ -513,6 +555,29 @@ public class Principal extends javax.swing.JFrame {
 
         tab_principal.addTab("Agregar", jPanel1);
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Categoria");
+        arbol_general.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane7.setViewportView(arbol_general);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(153, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        tab_lista.addTab("Arboles", jPanel4);
+
         tabla_general.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -521,6 +586,11 @@ public class Principal extends javax.swing.JFrame {
 
             }
         ));
+        tabla_general.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_generalMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tabla_general);
 
         buttonGroup1.add(jr_restaurante);
@@ -580,28 +650,18 @@ public class Principal extends javax.swing.JFrame {
 
         tab_lista.addTab("Tablas", jPanel3);
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
-        arbol_general.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane7.setViewportView(arbol_general);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 692, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 469, Short.MAX_VALUE)
         );
 
-        tab_lista.addTab("Arboles", jPanel4);
+        tab_lista.addTab("Listas", jPanel5);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -808,6 +868,83 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jr_carreterasActionPerformed
 
+    private void tabla_generalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_generalMouseClicked
+        // TODO add your handling code here:
+        if (evt.isMetaDown()) {
+            int pp = tabla_general.getSelectedRow();
+            eliminar.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_tabla_generalMouseClicked
+
+    private void elimiar_restauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elimiar_restauranteActionPerformed
+        // TODO add your handling code here:
+        if (tabla_general.getSelectedRow() >= 0) {
+            DefaultTableModel modelo = (DefaultTableModel) tabla_general.getModel();
+            restaurantes.remove(tabla_general.getSelectedRow());
+            modelo.removeRow(tabla_general.getSelectedRow());
+
+            tabla_general.setModel(modelo);
+        }
+
+    }//GEN-LAST:event_elimiar_restauranteActionPerformed
+
+    private void eliminar_canchasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_canchasActionPerformed
+        // TODO add your handling code here:
+        if (tabla_general.getSelectedRow() >= 0) {
+            DefaultTableModel modelo = (DefaultTableModel) tabla_general.getModel();
+            canchas.remove(tabla_general.getSelectedRow());
+            modelo.removeRow(tabla_general.getSelectedRow());
+
+            tabla_general.setModel(modelo);
+        }
+    }//GEN-LAST:event_eliminar_canchasActionPerformed
+
+    private void eliminar_carreterasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_carreterasActionPerformed
+        // TODO add your handling code here:
+        if (tabla_general.getSelectedRow() >= 0) {
+            DefaultTableModel modelo = (DefaultTableModel) tabla_general.getModel();
+            lista_carretera.remove(tabla_general.getSelectedRow());
+            modelo.removeRow(tabla_general.getSelectedRow());
+
+            tabla_general.setModel(modelo);
+        }
+    }//GEN-LAST:event_eliminar_carreterasActionPerformed
+
+    private void tab_lugaresStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tab_lugaresStateChanged
+        // TODO add your handling code here:
+        if (tab_lugares.getSelectedIndex() == 1) {
+            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            for (Object temp : restaurantes) {
+                modelo.addElement(temp);
+            }
+            for (Object temp : casas) {
+                modelo.addElement(temp);
+            }
+            for (Object temp : canchas) {
+                modelo.addElement(temp);
+            }
+
+            jc_inicio.setModel(modelo);
+            jc_final.setModel(modelo);
+        }
+
+    }//GEN-LAST:event_tab_lugaresStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        numero = Integer.parseInt(numero_carretera.getText());
+        distancia = Double.parseDouble(distancia_carretera.getText());
+        inicio = (String) jc_inicio.getSelectedItem();
+        finalizacion = (String) jc_final.getSelectedItem();
+        lista_carretera.add(new Carretera(new Lugares(), numero, distancia, new Lugares()));
+        JOptionPane.showMessageDialog(this, "Carrretera Agregada");
+        DefaultTableModel modelo = (DefaultTableModel) tabla_general.getModel();
+        Object[] newrow = {nombre_canchas.getText(), direccion_canchas.getText(),
+            categoria_restaurante.getSelectedItem()};
+        modelo.addRow(newrow);
+        tabla_general.setModel(modelo);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -859,13 +996,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextArea direccion_casa;
     private javax.swing.JTextArea direccion_restaurante;
     private javax.swing.JTextField distancia_carretera;
+    private javax.swing.JMenuItem elimiar_restaurante;
+    private javax.swing.JPopupMenu eliminar;
+    private javax.swing.JMenuItem eliminar_canchas;
+    private javax.swing.JMenuItem eliminar_carreteras;
     private javax.swing.JComboBox<String> entrada_cancha;
     private javax.swing.JComboBox<String> entrada_casa;
     private javax.swing.JComboBox<String> entrada_restaurantes;
     private javax.swing.JTextField estado_cancha;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -893,11 +1032,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JComboBox<String> jc_final;
+    private javax.swing.JComboBox<String> jc_inicio;
     private javax.swing.JRadioButton jr_canchas;
     private javax.swing.JRadioButton jr_carreteras;
     private javax.swing.JRadioButton jr_restaurante;
@@ -931,4 +1073,7 @@ public class Principal extends javax.swing.JFrame {
     String categoria;
     int nivel_seguridad;
     int calificacion;
+    int numero;
+    double distancia;
+    String inicio, finalizacion;
 }
