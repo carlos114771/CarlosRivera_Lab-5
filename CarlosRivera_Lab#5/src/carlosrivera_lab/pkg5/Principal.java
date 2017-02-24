@@ -797,6 +797,15 @@ public class Principal extends javax.swing.JFrame {
             categoria = (String) categoria_canchas.getSelectedItem();
             canchas.add(new Canchas(categoria, estado, nombre, direccion, nivel_seguridad, new Carretera(), new Carretera()));
             JOptionPane.showMessageDialog(this, "La cancha fue agregada ");
+            
+            
+            if (Double.parseDouble(distancia_carretera.getText()) <= 50) {
+                DefaultListModel modelo = (DefaultListModel) lista_general.getModel();
+                modelo.addElement(new Lugares(nombre_canchas.getText(), direccion_canchas.getText(), Integer.parseInt(nivel_canchas.getText()),
+                        new Carretera(), new Carretera()));
+            }
+            
+            
             DefaultTableModel modelo = (DefaultTableModel) tabla_general.getModel();
             Object[] newrow = {nombre_canchas.getText(), direccion_canchas.getText(),
                 categoria_restaurante.getSelectedItem()};
