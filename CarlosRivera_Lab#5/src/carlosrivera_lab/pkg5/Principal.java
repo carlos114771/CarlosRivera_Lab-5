@@ -107,6 +107,8 @@ public class Principal extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         arbol_general = new javax.swing.JTree();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabla_general = new javax.swing.JTable();
@@ -299,16 +301,14 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(salida_casa, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(entrada_casa, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(nivel_casa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)))))
-                .addContainerGap(309, Short.MAX_VALUE))
-            .addGroup(casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(casaLayout.createSequentialGroup()
-                    .addGap(378, 378, 378)
-                    .addComponent(agregar_casa)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(casaLayout.createSequentialGroup()
+                                .addGroup(casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(salida_casa, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(entrada_casa, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nivel_casa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                                .addGap(106, 106, 106)
+                                .addComponent(agregar_casa)))))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
         casaLayout.setVerticalGroup(
             casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,16 +332,17 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(entrada_casa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(salida_casa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59))
-            .addGroup(casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(casaLayout.createSequentialGroup()
-                    .addContainerGap(365, Short.MAX_VALUE)
-                    .addComponent(agregar_casa)
-                    .addGap(34, 34, 34)))
+                .addGroup(casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(casaLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel25)
+                            .addComponent(salida_casa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(59, 59, 59))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, casaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(agregar_casa)
+                        .addGap(30, 30, 30))))
         );
 
         lugares_tab.addTab("Casas", casa);
@@ -562,21 +563,29 @@ public class Principal extends javax.swing.JFrame {
         arbol_general.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane7.setViewportView(arbol_general);
 
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Categoria");
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane6.setViewportView(jTree1);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(203, 203, 203))
         );
 
         tab_lista.addTab("Arboles", jPanel4);
@@ -719,6 +728,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void agregar_restauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_restauranteActionPerformed
         // TODO add your handling code here:
+        distancia_carretera.setText("0");
         try {
             nombre = nombre_restaurante.getText();
             direccion = direccion_restaurante.getText();
@@ -727,15 +737,13 @@ public class Principal extends javax.swing.JFrame {
             calificacion = (Integer) calificacion_restaurante.getValue();
             restaurantes.add(new Restaurantes(categoria, calificacion, nombre, direccion, nivel_seguridad, new Carretera(), new Carretera()));
             JOptionPane.showMessageDialog(this, "El Restaurante fue agregado");
-            
-            
+
             if (Double.parseDouble(distancia_carretera.getText()) <= 50) {
                 DefaultListModel modelo = (DefaultListModel) lista_general.getModel();
                 modelo.addElement(new Lugares(nombre_restaurante.getText(), direccion_restaurante.getText(), Integer.parseInt(nivel_restaurante.getText()),
                         new Carretera(), new Carretera()));
             }
-            
-            
+
             DefaultTableModel modelo = (DefaultTableModel) tabla_general.getModel();
             Object[] newrow = {nombre_restaurante.getText(), direccion_restaurante.getText(), categoria_restaurante.getSelectedItem(),
                 calificacion_restaurante.getValue()};
@@ -768,13 +776,14 @@ public class Principal extends javax.swing.JFrame {
 
     private void agregar_casaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_casaActionPerformed
         // TODO add your handling code here:
+        distancia_carretera.setText("0");
         try {
             nombre = nombre_casa.getText();
             direccion = direccion_casa.getText();
             nivel_seguridad = Integer.parseInt(nivel_casa.getText());
             casas.add(new Casa(nombre, direccion, nivel_seguridad, new Carretera(), new Carretera()));
             JOptionPane.showMessageDialog(this, "La cancha fue agregada ");
-            
+
             if (Double.parseDouble(distancia_carretera.getText()) <= 50) {
                 DefaultListModel modelo = (DefaultListModel) lista_general.getModel();
                 modelo.addElement(new Lugares(nombre_casa.getText(), direccion_casa.getText(), Integer.parseInt(nivel_casa.getText()),
@@ -789,6 +798,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void agregar_canchasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_canchasActionPerformed
         // TODO add your handling code here:
+        distancia_carretera.setText("0");
         try {
             nombre = nombre_canchas.getText();
             direccion = direccion_canchas.getText();
@@ -797,15 +807,13 @@ public class Principal extends javax.swing.JFrame {
             categoria = (String) categoria_canchas.getSelectedItem();
             canchas.add(new Canchas(categoria, estado, nombre, direccion, nivel_seguridad, new Carretera(), new Carretera()));
             JOptionPane.showMessageDialog(this, "La cancha fue agregada ");
-            
-            
+
             if (Double.parseDouble(distancia_carretera.getText()) <= 50) {
                 DefaultListModel modelo = (DefaultListModel) lista_general.getModel();
                 modelo.addElement(new Lugares(nombre_canchas.getText(), direccion_canchas.getText(), Integer.parseInt(nivel_canchas.getText()),
                         new Carretera(), new Carretera()));
             }
-            
-            
+
             DefaultTableModel modelo = (DefaultTableModel) tabla_general.getModel();
             Object[] newrow = {nombre_canchas.getText(), direccion_canchas.getText(),
                 categoria_restaurante.getSelectedItem()};
@@ -1073,7 +1081,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTree jTree1;
     private javax.swing.JComboBox<String> jc_final;
     private javax.swing.JComboBox<String> jc_inicio;
     private javax.swing.JRadioButton jr_canchas;
