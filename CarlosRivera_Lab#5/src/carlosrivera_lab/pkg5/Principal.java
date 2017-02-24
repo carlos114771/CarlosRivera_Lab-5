@@ -7,6 +7,7 @@ package carlosrivera_lab.pkg5;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -113,6 +114,8 @@ public class Principal extends javax.swing.JFrame {
         jr_canchas = new javax.swing.JRadioButton();
         jr_carreteras = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        lista_general = new javax.swing.JList<>();
 
         elimiar_restaurante.setText("Eliminar Restaurante");
         elimiar_restaurante.addActionListener(new java.awt.event.ActionListener() {
@@ -650,15 +653,23 @@ public class Principal extends javax.swing.JFrame {
 
         tab_lista.addTab("Tablas", jPanel3);
 
+        jScrollPane5.setViewportView(lista_general);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 692, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(242, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 469, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         tab_lista.addTab("Listas", jPanel5);
@@ -716,6 +727,15 @@ public class Principal extends javax.swing.JFrame {
             calificacion = (Integer) calificacion_restaurante.getValue();
             restaurantes.add(new Restaurantes(categoria, calificacion, nombre, direccion, nivel_seguridad, new Carretera(), new Carretera()));
             JOptionPane.showMessageDialog(this, "El Restaurante fue agregado");
+            
+            
+            if (Double.parseDouble(distancia_carretera.getText()) <= 50) {
+                DefaultListModel modelo = (DefaultListModel) lista_general.getModel();
+                modelo.addElement(new Lugares(nombre_restaurante.getText(), direccion_restaurante.getText(), Integer.parseInt(nivel_restaurante.getText()),
+                        new Carretera(), new Carretera()));
+            }
+            
+            
             DefaultTableModel modelo = (DefaultTableModel) tabla_general.getModel();
             Object[] newrow = {nombre_restaurante.getText(), direccion_restaurante.getText(), categoria_restaurante.getSelectedItem(),
                 calificacion_restaurante.getValue()};
@@ -754,6 +774,12 @@ public class Principal extends javax.swing.JFrame {
             nivel_seguridad = Integer.parseInt(nivel_casa.getText());
             casas.add(new Casa(nombre, direccion, nivel_seguridad, new Carretera(), new Carretera()));
             JOptionPane.showMessageDialog(this, "La cancha fue agregada ");
+            
+            if (Double.parseDouble(distancia_carretera.getText()) <= 50) {
+                DefaultListModel modelo = (DefaultListModel) lista_general.getModel();
+                modelo.addElement(new Lugares(nombre_casa.getText(), direccion_casa.getText(), Integer.parseInt(nivel_casa.getText()),
+                        new Carretera(), new Carretera()));
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1037,12 +1063,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JComboBox<String> jc_final;
     private javax.swing.JComboBox<String> jc_inicio;
     private javax.swing.JRadioButton jr_canchas;
     private javax.swing.JRadioButton jr_carreteras;
     private javax.swing.JRadioButton jr_restaurante;
+    private javax.swing.JList<String> lista_general;
     private javax.swing.JPanel lugares;
     private javax.swing.JTabbedPane lugares_tab;
     private javax.swing.JTextField nivel_canchas;
