@@ -575,7 +575,7 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Restaurantes", jPanel5);
 
-        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Canchas");
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Categorias");
         arbol_cancha.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane6.setViewportView(arbol_cancha);
 
@@ -584,16 +584,16 @@ public class Principal extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addGap(77, 77, 77)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
 
         jTabbedPane1.addTab("Canchas", jPanel6);
@@ -703,9 +703,9 @@ public class Principal extends javax.swing.JFrame {
     private void agregar_casaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_casaActionPerformed
         // TODO add your handling code here:
         try {
-            nombre = nombre_restaurante.getText();
-            direccion = direccion_restaurante.getText();
-            nivel_seguridad = Integer.parseInt(nivel_restaurante.getText());
+            nombre = nombre_casa.getText();
+            direccion = direccion_casa.getText();
+            nivel_seguridad = Integer.parseInt(nivel_casa.getText());
             lista_lugar.add(new Casa(nombre, direccion, nivel_seguridad, new Carretera(), new Carretera()));
             JOptionPane.showMessageDialog(this, "La cancha fue agregada ");
 
@@ -730,6 +730,26 @@ public class Principal extends javax.swing.JFrame {
                 categoria_restaurante.getSelectedItem()};
             modelo.addRow(newrow);
             tabla_general.setModel(modelo);
+
+            DefaultTreeModel m = (DefaultTreeModel) arbol_cancha.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+            DefaultMutableTreeNode nodo_lugar;
+            nodo_lugar = new DefaultMutableTreeNode(new Canchas(categoria,
+                    estado, nombre, direccion, nivel_seguridad, new Carretera(), new Carretera()));
+            DefaultMutableTreeNode categorias;
+            categorias = new DefaultMutableTreeNode(categoria_canchas.getSelectedItem());
+            DefaultMutableTreeNode nombres_cancha;
+            nombres_cancha = new DefaultMutableTreeNode(nombre_canchas.getText());
+            categorias.add(nombres_cancha);
+            nodo_lugar.add(categorias);
+            raiz.add(categorias);
+            m.reload();
+            nombre_canchas.setText("");
+            direccion_canchas.setText("");
+            nivel_canchas.setText("");
+            categoria_canchas.setSelectedItem(0);
+            estado_cancha.setText("");
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "No se Puedo Agregar");
